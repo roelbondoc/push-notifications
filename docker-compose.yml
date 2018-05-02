@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    image: vapor/vapor
+    command: vapor run
+    volumes:
+      - .:/vapor
+    ports:
+      - "8080:8080"
+  db:
+    image: postgres
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=apns
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=apns
+    ports:
+      - "5432:5432"
